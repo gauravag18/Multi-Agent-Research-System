@@ -1,7 +1,9 @@
+import time
+
 from agents import build_reader_agent , build_search_agent , writer_chain , critic_chain
 
 def run_research_pipeline(topic : str) -> dict:
-
+    start = time.perf_counter()
     state = {}
 
     #search agent working 
@@ -64,6 +66,10 @@ def run_research_pipeline(topic : str) -> dict:
     })
 
     print("\n critic report \n", state['feedback'])
+
+    elapsed = time.perf_counter() - start
+    state["pipeline_elapsed_seconds"] = elapsed
+    print(f"\nPipeline completed in {elapsed:.2f}s")
 
     return state
 

@@ -152,3 +152,20 @@ Run the pipeline directly in your terminal:
 python pipeline.py
 ```
 *Follow the interactive prompt to enter your topic, and watch the real-time pipeline print outputs for each step.*
+
+### Measure real pipeline latency
+With your API keys configured, run five end-to-end requests and collect real
+timings from the search, reader, writer, and critic workflow:
+```bash
+python benchmark_pipeline.py
+```
+The benchmark prints the time for every query, then reports the average and
+fastest-to-slowest range. It makes real API and web-tool calls, so results vary
+with provider latency, source availability, and report length. For a report or
+demo, use the final `Report-ready` line rather than a single run.
+
+To benchmark your own representative workload, provide five to ten quoted
+topics:
+```bash
+python benchmark_pipeline.py "AI regulation in India" "Recent battery recycling advances" "Urban heat adaptation" "Quantum error correction" "Precision agriculture"
+```
